@@ -13,10 +13,12 @@ public class Doctor {
     String id;
 
     String name;
+    
+    String district;
 
-    String phone;
+    String city;
 
-    String email;
+    String country;
 
     @Singular
     Set<String> specializations;
