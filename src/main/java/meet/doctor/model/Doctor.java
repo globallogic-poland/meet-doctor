@@ -12,7 +12,9 @@ public class Doctor {
 
     String id;
 
-    String name;
+    String firstName;
+
+    String lastName;
     
     String district;
 
