@@ -6,9 +6,9 @@ spring:
     stream:
       bindings:
         patient-create-requests:
-          destination: patient-create-requests
+          destination: doctor-create-requests
         patient-create-results:
-          destination: patient-create-results
+          destination: doctor-create-results
 
   data:
     cassandra:
