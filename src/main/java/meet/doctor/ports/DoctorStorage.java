@@ -9,7 +9,7 @@ public interface DoctorStorage {
 
     Mono<Doctor> findById(DoctorKey id);
 
-    Flux<Doctor> insert(Flux<Doctor> patientFlux);
+    Flux<Doctor> insert(Flux<Doctor> doctorFlux);
 
     Flux<Doctor> findAll();
 

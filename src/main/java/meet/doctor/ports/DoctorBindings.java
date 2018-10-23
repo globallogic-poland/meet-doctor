@@ -7,12 +7,12 @@ import org.springframework.messaging.SubscribableChannel;
 
 public interface DoctorBindings {
 
-    String DOCTOR_CREATE_REQUESTS = "patient-create-requests";
-    String DOCTOR_CREATE_RESULTS = "patient-create-results";
+    String DOCTOR_CREATE_REQUESTS = "doctor-create-requests";
+    String DOCTOR_CREATE_RESULTS = "doctor-create-results";
 
     @Input(DOCTOR_CREATE_REQUESTS)
-    SubscribableChannel createPatientRequests();
+    SubscribableChannel createDoctorRequests();
 
     @Output(DOCTOR_CREATE_RESULTS)
-    MessageChannel createPatientResults();
+    MessageChannel createDoctorResults();
 }

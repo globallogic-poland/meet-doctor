@@ -5,15 +5,15 @@ spring:
   cloud:
     stream:
       bindings:
-        patient-create-requests:
+        doctor-create-requests:
           destination: doctor-create-requests
-        patient-create-results:
+        doctor-create-results:
           destination: doctor-create-results
 
   data:
     cassandra:
       port: 9042
-      keyspace-name: patient
+      keyspace-name: doctor
       contact-points: localhost
 
   kafka:

@@ -25,9 +25,9 @@ public class DoctorProcessor {
     @StreamListener
     @Output(DOCTOR_CREATE_RESULTS)
     public Flux<DoctorDto> insert(@Input(DOCTOR_CREATE_REQUESTS) Flux<DoctorDto> doctorFlux) {
-        Flux<Doctor> patientPublisher = doctorFlux
+        Flux<Doctor> doctorPublisher = doctorFlux
                 .map(doctorTransformer::fromDto);
-        return doctorStorage.insert(patientPublisher)
+        return doctorStorage.insert(doctorPublisher)
                 .map(doctorTransformer::toDto);
     }
 
