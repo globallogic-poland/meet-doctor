@@ -26,9 +26,11 @@ public class DoctorProcessor {
     @Output(DOCTOR_CREATE_RESULTS)
     public Flux<DoctorDto> insert(@Input(DOCTOR_CREATE_REQUESTS) Flux<DoctorDto> doctorFlux) {
         Flux<Doctor> doctorPublisher = doctorFlux
-                .map(doctorTransformer::fromDto);
+                .map(doctorTransformer::fromDto)
+                .log();
         return doctorStorage.insert(doctorPublisher)
-                .map(doctorTransformer::toDto);
+                .map(doctorTransformer::toDto)
+                .log();
     }
 
 }

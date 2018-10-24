@@ -19,7 +19,7 @@ public class DoctorTransformer {
         Set<String> specializationsText = doctor.getSpecializations();
         List<Specialization> specializations = specializationsText == null ? Collections.emptyList() :
                 specializationsText.stream()
-                        .map(Specialization::findByDisplayName)
+                        .map(Specialization::valueOf)
                         .collect(Collectors.toList());
 
         DoctorKey key = doctor.getKey();
