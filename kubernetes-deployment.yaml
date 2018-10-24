@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meet-doctor
+spec:
+  selector:
+    matchLabels:
+      app: meet-doctor
+      tier: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: meet-doctor
+        tier: backend
+    spec:
+      containers:
+      - name: meet-doctor
+        image: wba11:8083/meet-doctor:0.0.1
+        resources:
+          requests:
+            cpu: 0.1
+            memory: 300Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: nextus

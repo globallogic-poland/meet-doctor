@@ -4,9 +4,14 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+//            url "(http://repo.spring.io/plugins-release/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0'
     }
 }
 
@@ -14,9 +19,10 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.palantir.docker'
 
 group = 'meet'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = 11
 
 repositories {
@@ -30,13 +36,28 @@ ext {
     mockitoVersion = '2.21.0'
 }
 
+docker {
+    name "${jar.baseName}:${version}"
+    files jar.archivePath
+    buildArgs(['JAR_FILE': "${jar.archiveName}"])
+}
+
 dependencies {
+
+//    constraints {
+//        implementation('org.projectlombok:lombok:1.18.2') {
+//            because 'lombok in previous versions does not work with jdk11'
+//        }
+//    }
+
     implementation('org.springframework.boot:spring-boot-starter-webflux')
     implementation('org.springframework.boot:spring-boot-starter-data-cassandra-reactive')
     implementation('org.springframework.cloud:spring-cloud-stream-reactive')
     implementation('org.springframework.cloud:spring-cloud-stream-binder-kafka')
     implementation('org.springframework.kafka:spring-kafka')
-    compileOnly('org.projectlombok:lombok')
+//    compileOnly('org.projectlombok:lombok')
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('io.projectreactor:reactor-test')
     testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
@@ -49,6 +70,7 @@ dependencies {
     testCompile "org.mockito:mockito-core:${mockitoVersion}"
     testCompile "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
+
 }
 
 dependencyManagement {
