@@ -1,7 +1,6 @@
 package meet.doctor.dto;
 
 public enum Specialization {
-
     ALLERGIST,
     IMMUNOLOGIST,
     ANESTHESIOLOGIST,
@@ -32,5 +31,4 @@ public enum Specialization {
     DIAGNOSTIC_RADIOLOGIST,
     RHEUMATOLOGIST,
     UROLOGIST;
-
 }
