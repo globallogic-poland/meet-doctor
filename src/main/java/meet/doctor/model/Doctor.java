@@ -1,28 +1,31 @@
 package meet.doctor.model;
 
-import lombok.Builder;
-import lombok.Singular;
-import lombok.Value;
+import lombok.*;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.util.Set;
 
-@Value
 @Builder
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@Table
 public class Doctor {
 
-    String id;
+    @PrimaryKey
+    private DoctorKey key;
 
-    String firstName;
+    @Column
+    private String firstName;
 
-    String lastName;
-    
-    String district;
-
-    String city;
-
-    String country;
+    @Column
+    private String lastName;
 
     @Singular
-    Set<String> specializations;
+    @Column
+    private Set<String> specializations;
 
 }
