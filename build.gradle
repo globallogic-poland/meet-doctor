@@ -6,7 +6,6 @@ buildscript {
         mavenCentral()
         maven {
             url "https://plugins.gradle.org/m2/"
-//            url "(http://repo.spring.io/plugins-release/"
         }
     }
     dependencies {
@@ -43,12 +42,6 @@ docker {
 }
 
 dependencies {
-
-//    constraints {
-//        implementation('org.projectlombok:lombok:1.18.2') {
-//            because 'lombok in previous versions does not work with jdk11'
-//        }
-//    }
 
     implementation('org.springframework.boot:spring-boot-starter-webflux')
     implementation('org.springframework.boot:spring-boot-starter-data-cassandra-reactive')

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: meet-doctor
-        image: wba11:8083/meet-doctor:0.0.1
+        image: registry:8083/meet-doctor:0.0.1
         resources:
           requests:
             cpu: 0.1
